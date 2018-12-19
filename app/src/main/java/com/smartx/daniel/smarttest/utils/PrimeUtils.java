@@ -69,9 +69,10 @@ public class PrimeUtils {
                 int k = i;
                 while (j <= num) {
                     isPrime[j] = false;
-                    while (j * i <= num) {
-                        isPrime[j*=i] = false;
-                    }
+                        while (j * i <= num && j*i>0) { //防止超出int范围变成负值
+                            isPrime[j*i] = false;
+                            j*=i;
+                        }
                     k += 2;
                     if (!isPrime[k]) {
                         k += 2;
